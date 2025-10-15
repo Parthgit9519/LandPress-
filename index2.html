@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Right Sidebar Nav</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .font-figtree {
+        font-family: "Figtree", sans-serif;
+      }
+      html,
+      body {
+        height: 100%;
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="font-figtree min-h-screen">
+    <main class="main min-h-screen w-full flex flex-col">
+      <!-- Navigation -->
+      <nav
+        class="h-16 flex items-center justify-between w-full bg-white px-4 lg:px-8 shadow-md relative z-20"
+      >
+        <!-- Left side (logo + links) -->
+        <div class="flex items-center gap-6 lg:gap-8">
+          <!-- Logo -->
+          <div>
+            <img
+              src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-logo.svg"
+              alt="Logo"
+              class="h-6 lg:h-7"
+            />
+          </div>
+
+          <!-- Desktop Links -->
+          <ul class="hidden lg:flex text-[rgb(2,69,80)] font-medium gap-8">
+            <a href="#" class="hover:text-[rgb(39,209,108)] transition-colors"
+              >About</a
+            >
+            <a href="#" class="hover:text-[rgb(39,209,108)] transition-colors"
+              >Services</a
+            >
+            <a href="#" class="hover:text-[rgb(39,209,108)] transition-colors"
+              >Pricing</a
+            >
+            <a href="#" class="hover:text-[rgb(39,209,108)] transition-colors"
+              >Insights</a
+            >
+            <a href="#" class="hover:text-[rgb(39,209,108)] transition-colors"
+              >Contact</a
+            >
+          </ul>
+        </div>
+
+        <!-- Right side -->
+        <div class="hidden lg:flex gap-3">
+          <button
+            class="bg-[rgb(39,209,108)] hover:bg-[rgb(35,185,95)] text-white px-4 py-2 font-medium rounded transition-colors"
+          >
+            Book intro call
+          </button>
+          <button
+            class="bg-[rgb(2,69,80)] hover:bg-[rgb(1,55,64)] text-white px-4 py-2 font-medium rounded transition-colors"
+          >
+            Ready to talk?
+          </button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="lg:hidden">
+          <button id="menuBtn" class="text-[rgb(2,69,80)] text-2xl p-2">
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      <!-- Overlay (dark background when menu open) -->
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-30"
+      ></div>
+
+      <!-- Mobile Sidebar Menu -->
+      <div
+        id="mobileMenu"
+        class="fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col px-6 py-8 gap-6 z-40"
+      >
+        <!-- Close Button -->
+        <button id="closeBtn" class="self-end text-2xl text-gray-700 p-2">
+          ✕
+        </button>
+
+        <a
+          href="#"
+          class="text-[rgb(2,69,80)] text-lg py-2 hover:text-[rgb(39,209,108)] transition-colors"
+          >About</a
+        >
+        <a
+          href="#"
+          class="text-[rgb(2,69,80)] text-lg py-2 hover:text-[rgb(39,209,108)] transition-colors"
+          >Services</a
+        >
+        <a
+          href="#"
+          class="text-[rgb(2,69,80)] text-lg py-2 hover:text-[rgb(39,209,108)] transition-colors"
+          >Pricing</a
+        >
+        <a
+          href="#"
+          class="text-[rgb(2,69,80)] text-lg py-2 hover:text-[rgb(39,209,108)] transition-colors"
+          >Insights</a
+        >
+        <a
+          href="#"
+          class="text-[rgb(2,69,80)] text-lg py-2 hover:text-[rgb(39,209,108)] transition-colors"
+          >Contact</a
+        >
+
+        <div class="flex flex-col gap-3 mt-4">
+          <button
+            class="bg-[rgb(39,209,108)] text-white px-4 py-3 font-medium rounded"
+          >
+            Book intro call
+          </button>
+          <button
+            class="bg-[rgb(2,69,80)] text-white px-4 py-3 font-medium rounded"
+          >
+            Ready to talk?
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Hero Section start-->
+      <section
+        class="section-1 relative flex-1 w-full bg-cover bg-center bg-no-repeat bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-bg-3.jpg')]"
+      >
+        <!-- Mix Blend Mode Overlay -->
+        <div
+          class="absolute inset-0 bg-black mix-blend-multiply opacity-60"
+        ></div>
+
+        <!-- Content Container -->
+        <div class="section1text relative z-10 h-full w-full">
+          <!-- Desktop Layout -->
+          <div class="hidden lg:flex h-full">
+            <!-- Left Content -->
+            <div
+              class="w-[55%] xl:w-[60%] flex flex-col justify-center px-8 xl:px-16 py-12"
+            >
+              <div class="max-w-2xl">
+                <h3
+                  class="bg-[rgb(91,71,57)] bg-opacity-80 inline-block px-4 py-2 text-white text-sm font-medium rounded mb-6"
+                >
+                  Market Research and Analysis
+                </h3>
+
+                <h1
+                  class="text-white text-4xl xl:text-5xl w-100 2xl:text-6xl font-bold leading-tight mb-6"
+                >
+                  Empowering your business potential
+                </h1>
+
+                <p
+                  class="text-gray-200 text-lg xl:text-xl mt-28 leading-relaxed mb-2 max-w-lg"
+                >
+                  Unlock growth opportunities with data-driven insights and
+                  strategic market analysis.
+                </p>
+
+                <button
+                  class="bg-white hover:bg-gray-100 text-[rgb(3,68,80)] px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                >
+                  Learn More <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Form -->
+            <div
+              class="w-[45%] xl:w-[40%] flex items-center justify-center px-8 py-10"
+            >
+              <form
+                class="bg-white text-[rgb(3,68,80)] w-full max-w-md px-6 py-8 shadow-lg"
+              >
+                <h2
+                  class="text-2xl xl:text-3xl font-bold text-[rgb(3,68,80)] mb-6"
+                >
+                  Book Free Consultation
+                </h2>
+
+                <h3 class="text-base lg:mb-2 text-[rgb(3,68,80)] w-full">
+                  Fill out the form below, and we'll arrange a consultation at a
+                  time most suitable for you.
+                </h3>
+
+                <div class="space-y-5">
+                  <input
+                    type="text"
+                    placeholder="Full Name *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <textarea
+                    placeholder="Anything else you would like us to know? "
+                    rows="2"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)] resize-none"
+                  ></textarea>
+                  <input
+                    type="checkbox"
+                    name=""
+                    class="hover:text-black"
+                    placeholder=""
+                    id=" check"
+                  />
+
+                  <label for="check"
+                    >I understand and agree to the privacy policy.</label
+                  >
+
+                  <button
+                    type="submit"
+                    class="w-full bg-[rgb(39,209,108)] hover:bg-[rgb(35,185,95)] text-white py-3 font-semibold rounded-lg transition-colors"
+                  >
+                    Book Consultation
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Mobile/Tablet Layout -->
+          <div class="lg:hidden flex flex-col min-h-[calc(100vh-4rem)]">
+            <!-- Content Section -->
+            <div
+              class="flex-1 flex flex-col justify-center px-6 sm:px-8 py-12 text-center sm:text-left"
+            >
+              <h3
+                class="bg-[rgb(91,71,57)] bg-opacity-80 inline-block px-4 py-2 text-white text-sm font-medium rounded mb-6 self-center sm:self-start"
+              >
+                Market Research and Analysis
+              </h3>
+
+              <h1
+                class="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
+              >
+                Empowering your business potential
+              </h1>
+
+              <p
+                class="text-gray-200 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto sm:mx-0"
+              >
+                Unlock growth opportunities with data-driven insights and
+                strategic market analysis.
+              </p>
+
+              <button
+                class="bg-white hover:bg-gray-100 text-[rgb(3,68,80)] px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 self-center sm:self-start flex items-center gap-2"
+              >
+                Learn More <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+
+            <!-- Form Section -->
+            <div class="px-6 sm:px-8 pb-8">
+              <form
+                class="bg-white w-full max-w-lg mx-auto px-6 py-6 sm:py-8 shadow-lg"
+              >
+                <h2
+                  class="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center"
+                >
+                  Book Free Consultation
+                </h2>
+                <h3 class="text-base mb-2 text-black text-start text-sm w-full">
+                  Fill out the form below, and we'll arrange a consultation at a
+                  time most suitable for you.
+                </h3>
+                <div class="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Full Name *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number *"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)]"
+                  />
+                  <textarea
+                    placeholder=" else you would like us to know?"
+                    rows="3"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[rgb(39,209,108)] resize-none"
+                  >
+                  </textarea>
+
+                  <button
+                    type="submit"
+                    class="w-full bg-[rgb(39,209,108)] hover:bg-[rgb(35,185,95)] text-white py-3 font-semibold rounded-lg transition-colors"
+                  >
+                    Book Consultation
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Main Hero Section end-->
+
+      <!-- plan section start -->
+
+      <section class="plan w-full bg-[rgb(245,251,251)] py-10">
+        <div
+          class="planTopText flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 w-full max-w-7xl mx-auto px-6 lg:px-10"
+        >
+          <!-- Left big text -->
+          <div
+            class="textBig text-[rgb(3,68,80)] flex gap-2 lg:flex-col text-center lg:text-left space-y-2"
+          >
+            <h1 class="text-2xl sm:text-3xl lg:text-5xl font-semibold">
+              Big or small?
+            </h1>
+            <h1 class="text-2xl sm:text-3xl lg:text-5xl font-semibold">
+              We have a plan
+            </h1>
+          </div>
+
+          <!-- Middle small text -->
+          <div
+            class="textSmall text-[rgb(28,59,68)] lg:text-left text-base sm:text-lg lg:text-xl px-2 sm:px-6"
+          >
+            <h5 class="lg:w-120">
+              Our comprehensive solutions empower you to unleash the full
+              potential of your business, providing the tools, strategies, and
+              guidance needed to drive sustainable growth.
+            </h5>
+          </div>
+
+          <!-- Button -->
+          <div class="btn lg:mt-0">
+            <button
+              class="bg-[rgb(3,68,80)] text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg lg:text-xl rounded-lg"
+            >
+              About us <i class="text-lg fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="planMiddle w-full mt-5 p-6 lg:p-8 gap-6 grid grid-cols-1 md:grid-cols-2 text-[rgb(3,68,80)] lg:grid-cols-4"
+        >
+          <!-- Box 1 -->
+          <div
+            class="mission flex flex-col hover:bg-white gap-3 p-4 border lg:border-l lg:border-0 border-gray-400"
+          >
+            <h4 class="text-lg font-semibold border-b pb-3">Vision</h4>
+
+            <h2 class="text-2xl">Creating a future of innovation</h2>
+            <h4>Empowering business to reach their full potential</h4>
+          </div>
+
+          <!-- Box 2 -->
+          <div
+            class="goals flex flex-col gap-3 hover:bg-white p-4 lg:border-l border border-gray-400 lg:border-0"
+          >
+            <h4 class="text-lg font-semibold border-b pb-3">Goals</h4>
+            <h2 class="text-2xl">Strategic partnership</h2>
+            <h4>Fuling innovation to shape tommorow's landscape.</h4>
+          </div>
+
+          <!-- Box 3 -->
+          <div
+            class="values flex flex-col gap-3 hover:bg-white p-4 lg:border-l border border-gray-400 lg:border-0"
+          >
+            <h4 class="text-lg font-semibold border-b pb-3">Values</h4>
+            <h2 class="text-2xl">Creating a future of innovation</h2>
+            <h4>Forging partnership for mutual growth and sucsess.</h4>
+          </div>
+
+          <!-- Box 4 (extra for testing layout) -->
+          <div
+            class="extra flex flex-col gap-3 p-4 hover:bg-white lg:border-l lg:border-r border border-gray-400 lg:border-0"
+          >
+            <h4 class="text-lg font-semibold border-b pb-3">Mission</h4>
+            <h2 class="text-2xl">Integrity, innovation, collaboration</h2>
+            <h4>Guided by integrity, and driven by innovation.</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- plan section end -->
+
+      <!-- market section start-->
+
+      <section class="market h-full w-full">
+        <nav
+          class="mid justify-evenly py-6 items-center hidden lg:flex lg:w-full lg:h-19 lg:border-b"
+        >
+          <div class="content-nav">
+            <h1 class="font-semibold text-[rgb(39,209,108)] text-xl">
+              Content marketing
+            </h1>
+          </div>
+          <div class="campagin-nav flex items-center gap-2">
+            <a href="#campaign">
+              <h1
+                class="text-xl text-[rgb(3,68,80)] font-semibold hover:text-[rgb(39,209,108)]"
+              >
+                Campaign optimization
+              </h1>
+            </a>
+            <p
+              class="bg-green-50 font-semibold text-[rgb(39,209,108)] [ px-2 py-1 text-sm"
+            >
+              NEW
+            </p>
+          </div>
+          <div class="market-nav">
+            <a href="#market">
+              <h1
+                class="font-semibold text-[rgb(3,68,80)] hover:text-[rgb(39,209,108)] text-xl"
+              >
+                Market research
+              </h1>
+            </a>
+          </div>
+        </nav>
+        <!-- nav end -->
+
+        <!-- content-div start -->
+        <div class="content w-full lg:flex mt-10 lg:mt-30">
+          <div
+            class="lg:left-content p-6 lg:px-10 sm:top-content lg:w-[50%] lg:h-full"
+          >
+            <button
+              class="px-2 py-1 bg-[rgb(245,251,250)] text-[rgb(39,209,108)]"
+            >
+              Content marketing
+            </button>
+
+            <h2
+              class="text-[rgb(3,68,80)] py-3 text-2xl lg:text-5xl font-semibold"
+            >
+              Content creation and distribution
+            </h2>
+
+            <p class="lg:mt-37 lg:text-[1em] lg:w-90">
+              Engaging content strategies tailored to your audience to enhance
+              brand awareness.
+            </p>
+            <button
+              class="bg-[rgb(3,68,80)] mt-5 lg:mt-8 text-white hover:bg-[rgb(39,209,108)] px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+            >
+              Learn more <i class="text-lg fa-solid fa-arrow-right"></i>
+            </button>
+
+            <div class="lg:hidden bg-gray-300 w-full h-full mt-10">
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-6.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div
+            class="lg:right-content sm:bottom-content lg:w-[50%] px-10 lg:h-full"
+          >
+            <div
+              class="hidden lg:flex bg-[rgb(245,251,250)] w-full bg-opacity-50 p-8 object-cover mt-10"
+            >
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-6.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <!-- content-div end -->
+
+        <!-- campaign div start -->
+        <div
+          id="campaign"
+          class="campaign w-full lg:flex mt-10 lg:mt-25 border-t"
+        >
+          <div
+            class="lg:left-campaign p-6 lg:px-10 sm:top-content lg:w-[50%] lg:h-full"
+          >
+            <button
+              class="px-2 py-1 bg-[rgb(245,251,250)] text-[rgb(39,209,108)]"
+            >
+              Campaign optimization
+            </button>
+
+            <h2
+              class="text-[rgb(3,68,80)] py-3 text-2xl lg:text-5xl font-semibold"
+            >
+              Fine-tuning marketing campaigns
+            </h2>
+
+            <p class="lg:mt-37 lg:text-[1em] lg:w-90">
+              Customized marketing plans to drive growth and achieve your
+              business objectives effectively.
+            </p>
+            <button
+              class="bg-[rgb(3,68,80)] mt-5 hover:bg-[rgb(39,209,108)] lg:mt-8 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+            >
+              Learn more <i class="text-lg fa-solid fa-arrow-right"></i>
+            </button>
+
+            <div class="lg:hidden bg-gray-300 w-full h-full mt-10">
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-1.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div
+            class="lg:right-content sm:bottom-content lg:w-[50%] px-10 lg:h-full"
+          >
+            <div
+              class="hidden lg:flex bg-[rgb(245,251,250)] w-full bg-opacity-50 p-8 object-cover mt-10"
+            >
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-1.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- campaign div end -->
+        <!-- market div start -->
+        <div class="market w-full lg:flex mt-10 lg:mt-25 border-t">
+          <div
+            id="market"
+            class="lg:left-market p-6 lg:px-10 sm:top-content lg:w-[50%] lg:h-full"
+          >
+            <button
+              class="px-2 py-1 bg-[rgb(245,251,250)] text-[rgb(39,209,108)]"
+            >
+              Market research
+            </button>
+
+            <h2
+              class="text-[rgb(3,68,80)] py-3 text-2xl lg:text-5xl font-semibold"
+            >
+              Data-driven market research analysis
+            </h2>
+
+            <p class="lg:mt-37 lg:text-[1em] lg:w-90">
+              In-depth market research to uncover valuable insights for
+              strategic business decisions.
+            </p>
+            <button
+              class="bg-[rgb(3,68,80)] mt-5 hover:bg-[rgb(39,209,108)] lg:mt-8 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+            >
+              Learn more <i class="text-lg fa-solid fa-arrow-right"></i>
+            </button>
+
+            <div class="lg:hidden bg-gray-300 w-full h-full mt-10">
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-5.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div
+            class="lg:right-content sm:bottom-content lg:w-[50%] px-10 lg:h-full"
+          >
+            <div
+              class="hidden lg:flex bg-[rgb(245,251,250)] w-full bg-opacity-50 p-8 object-cover mt-10"
+            >
+              <img
+                class="p-3"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-5.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- market section end-->
+
+      <!-- case study start -->
+      <section class="cases w-full bg-[rgb(244,250,250)] lg:flex">
+        <div
+          class="lg:w-[33.33%] w-full h-full bg-no-repeat bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/path.svg')] bg-[top_left] lg:bg-[top_right]"
+        >
+          <div class="text mt-10 p-5">
+            <div class="">
+              <h1
+                class="lg:text-5xl text-2xl lg:w-[7em] lg:text-[rgb(2,69,80)] font-semibold"
+              >
+                Those who made a change
+              </h1>
+              <p class="py-4 text-l text-[rgb(29,59,69)] lg:hidden">
+                Our solutions empower you to unleash the full potential of your
+                business, providing the tools, strategies, and guidance needed
+                to drive sustainable growth.
+              </p>
+
+              <button
+                class="bg-[rgb(3,68,80)] mt-5 hover:bg-[rgb(39,209,108)] lg:mt-8 text-white px-6 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2 lg:hidden"
+              >
+                All case studies <i class="text-lg fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- 1st pick section start -->
+            <div class="1st lg:mt-17">
+              <div
+                class="mt-10 w-full h-120 bg-center bg-cover bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/portrait4.jpg')] flex items-center justify-center relative group overflow-hidden"
+              >
+                <div
+                  class="hover-text absolute left-1/2 -translate-x-1/2 bottom-0 w-75 h-55 bg-white flex flex-col justify-center items-center mb-6 lg:rounded opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-full lg:transition-all lg:duration-300 lg:ease-out lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
+                >
+                  <h2 class="text-center w-50 text-l">
+                    Expert guidance through regulatory challenges
+                  </h2>
+                  <button
+                    class="lg:bg-[rgb(3,68,80)] mt-5 bg-[rgb(39,209,108)] lg:mt-8 text-white px-4 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+                  >
+                    Case studies
+                    <i class="text-lg fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <h2 class="text-[rgb(3,68,80)] lg:text-xl font-semibold p-4">
+                Helped navigate regulatory challenges. Valued advisors for
+                strategic financial decisions.
+              </h2>
+
+              <h4 class="text-3xl p-2 text-[rgb(3,68,80)] font-semibold">
+                + 120 %
+              </h4>
+              <p>Increase in customer growth rate</p>
+            </div>
+
+            <!-- 1st pic section done -->
+
+            <!-- 2nd pic section start -->
+
+            <div class="2nd lg:hidden">
+              <div
+                class="mt-10 w-full h-120 bg-center bg-cover bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/portrait2.jpg')] flex items-center justify-center"
+              >
+                <div
+                  class="w-75 mt-50 h-55 bg-white flex-col flex justify-center items-center"
+                >
+                  <h2 class="text-center w-50 text-l">
+                    Trusted support through market complexities
+                  </h2>
+                  <button
+                    class="lg:bg-[rgb(3,68,80)] mt-5 bg-[rgb(39,209,108)] lg:mt-8 text-white px-4 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+                  >
+                    Case studies
+                    <i class="text-lg fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <h2 class="text-[rgb(3,68,80)] text-l font-semibold p-4">
+                Stellar support in navigating market complexities. Trusted
+                partners for financial growth.
+              </h2>
+
+              <h4 class="text-3xl p-2 text-[rgb(3,68,80)] font-semibold">
+                $ 250 k
+              </h4>
+              <p>Saved in operational costs</p>
+            </div>
+            <!-- 2nd pick section done  -->
+
+            <!-- 3rd pic section start -->
+
+            <div class="3rd lg:hidden">
+              <div
+                class="mt-10 w-full h-120 bg-center bg-cover bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/portrait3.jpg')] flex items-center justify-center"
+              >
+                <div
+                  class="w-75 mt-50 h-55 bg-white flex-col flex justify-center items-center"
+                >
+                  <h2 class="text-center w-50 text-l">
+                    Tailored solutions for financial excellence
+                  </h2>
+                  <button
+                    class="lg:bg-[rgb(3,68,80)] mt-5 bg-[rgb(39,209,108)] lg:mt-8 text-white px-4 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+                  >
+                    Case studies
+                    <i class="text-lg fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <h2 class="text-[rgb(3,68,80)] text-l font-semibold p-4">
+                Innovative solutions tailored to our needs. A reliable partner
+                for our financial excellence.
+              </h2>
+
+              <h4 class="text-3xl p-2 text-[rgb(3,68,80)] font-semibold">
+                + 25 %
+              </h4>
+              <p>Increase in company revenue</p>
+            </div>
+            <!-- 3rd pic section end -->
+          </div>
+        </div>
+
+        <!-- mid section start -->
+        <div class="lg:w-[33.33%] w-full h-full">
+          <p class="lg:py-14 lg:text-l hidden lg:flex lg:text-[rgb(29,59,69)]">
+            Our solutions empower you to unleash the full potential of your
+            business, providing the tools, strategies, and guidance needed to
+            drive sustainable growth.
+          </p>
+          <div class="2nd lg:flex hidden mr-5 lg:flex-col">
+            <div
+              class="mt-10 w-full h-120 bg-center bg-cover relative bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/portrait2.jpg')] overflow-hidden group flex items-center justify-center"
+            >
+              <div
+                class="hover-text absolute left-1/2 -translate-x-1/2 bottom-0 w-75 h-55 bg-white flex flex-col justify-center items-center translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 mb-6 rounded"
+              >
+                <h2 class="text-center w-50 text-l">
+                  Trusted support through market complexities
+                </h2>
+                <button
+                  class="lg:bg-[rgb(3,68,80)] mt-5 bg-[rgb(39,209,108)] lg:mt-8 text-white px-4 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2"
+                >
+                  Case studies
+                  <i class="text-lg fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <h2 class="text-[rgb(3,68,80)] text-xl font-semibold p-4">
+              Stellar support in navigating market complexities. Trusted
+              partners for financial growth.
+            </h2>
+
+            <h4 class="text-3xl p-2 text-[rgb(3,68,80)] font-semibold">
+              $ 250 k
+            </h4>
+            <p>Saved in operational costs</p>
+          </div>
+        </div>
+        <!-- mid section end -->
+        <!-- bottom section start -->
+
+        <div
+          class="lg:w-[33.33%] w-full flex flex-col items-center justify-center h-full mr-5"
+        >
+          <button
+            class="bg-[rgb(3,68,80)] lg:mx-auto mt-5 hover:bg-[rgb(39,209,108)] lg:mt-18 text-white px-6 sm:px-8 py-4 sm:py-4 text-base sm:text-lg flex items-center gap-2 lg:flex hidden"
+          >
+            All case studies <i class="text-lg fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div
+            class="mt-23 hidden lg:flex w-full h-120 bg-center bg-cover relative overflow-hidden group bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/portrait3.jpg')]"
+          >
+            <div
+              class="hover-text absolute left-1/2 -translate-x-1/2 bottom-0 w-75 h-55 bg-white flex flex-col justify-center items-center translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 mb-6 rounded"
+            >
+              <h2 class="text-center w-50 text-l">
+                Tailored solutions for financial excellence
+              </h2>
+              <button
+                class="mt-5 px-4 py-4 text-base sm:text-lg flex items-center gap-2 bg-[rgb(39,209,108)] lg:bg-[rgb(3,68,80)] text-white"
+              >
+                Case studies <i class="text-lg fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="hidden lg:flex flex-col">
+            <h2 class="text-[rgb(3,68,80)] text-xl font-semibold p-4">
+              Innovative solutions tailored to our needs. A reliable partner for
+              our financial excellence.
+            </h2>
+            <h4 class="text-3xl p-2 text-[rgb(3,68,80)] font-semibold">
+              + 25 %
+            </h4>
+            <p class="ml-2">Increase in company revenue</p>
+          </div>
+        </div>
+        <!-- bottom section end -->
+      </section>
+
+      <!-- case study end -->
+
+      <!-- Success case  Start -->
+
+      <section>
+        <div
+          class="conatiner lg:flex sucsess w-full lg:gap-10 px-6 lg:px-16 mt-10 lg:mt-20"
+        >
+          <div
+            class="lg:w-[50%] p-5 bg-[rgb(244,250,250)] bg-cover bg-[url('https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/path.svg')] bg-center"
+          >
+            <img
+              class="lg:mx-auto lg:p-6"
+              src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2024/02/landpress-consulting-4.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="mt-10 lg:mt-0 px-2 lg:w-[45%] lg:px-22">
+            <button
+              class="px-4 py-1 bg-[rgb(230,251,250)] text-[rgb(39,209,108)]"
+            >
+              Client Stories
+            </button>
+            <h3
+              class="lg:text-5xl text-2xl text-[rgb(2,69,80)] lg:w-[10em] py-4 lg:py-8 font-medium leading-[1.1]"
+            >
+              Hear success stories from our satisfied users
+            </h3>
+
+            <h5 class="lg:text-lg text-l lg:mt-20">
+              Hear what our clients have to say about their experience working
+              with us.
+            </h5>
+
+            <button
+              class="bg-[rgb(3,68,80)] hover:bg-[rgb(39,209,108)] lg:mt-5 mt-4 text-white px-5 py-4 sm:py-4 text-lg flex items-center gap-2"
+            >
+              Why work with us <i class="text-lg fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Success case  end -->
+      <!-- comments case  start -->
+      <section>
+        <div class="container mt-15 overflow-hidden w-full">
+          <div
+            class="w-full flex lg:gap-10 gap-7 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overflow-x-auto px-6 lg:px-15"
+          >
+            <img class="lg:h-65" src="Screenshot (109).png" alt="" />
+            <img class="lg:h-65" src="Screenshot (112) - Copy.png" alt="" />
+            <img class="lg:h-65" src="Screenshot (113) - Copy.png" alt="" />
+            <img class="lg:h-65" src="Screenshot (109).png" alt="" />
+            <img class="lg:h-65" src="Screenshot (112) - Copy.png" alt="" />
+            <img class="lg:h-65" src="Screenshot (113) - Copy.png" alt="" />
+          </div>
+          <div
+            class="flex items-center justify-center text-gray-500 gap-2 text-6xl lg:text-5xl w-full"
+          >
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- comments case  end -->
+
+      <!-- insights case  start -->
+
+      <section>
+        <div
+          class="container mt-6 px-8 lg:px-16 lg:mt-15 w-full bg-[rgb(244,250,250)]"
+        >
+          <div
+            class="texts w-full lg:flex items-center lg:justify-between py-14"
+          >
+            <h2
+              class="text-xl lg:text-4xl lg:w-50 leading-tight text-[rgb(3,68,80)] font-semibold"
+            >
+              Insights and expertise
+            </h2>
+            <p class="text-l lg:w-80 py-5">
+              Stay informed and inspired with our blog, offering valuable
+              insights, tips, and industry updates to fuel your business growth.
+            </p>
+            <button
+              class="px-6 flex items-center gap-1 py-3 bg-[rgb(3,68,80)] hover:bg-[rgb(38,209,109)] text-white text-lg font-semibold"
+            >
+              Read all articles <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+          <!-- img section  -->
+
+          <div class="imageText lg:gap-6 lg:flex w-full">
+            <div class="1st hover:scale-105 transition delay-0 duration-200">
+              <img
+                class="shadow-lg"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2023/08/blog-post-1.jpg"
+                alt=""
+              />
+              <h3
+                class="hover:text-[rgb(39,208,109)] transition delay-100 hover:text-shadow-sm duration-150 ease-in-out py-4 text-xl text-[rgb(2,69,80)] font-semibold"
+              >
+                Strategies for scaling your business successfully
+              </h3>
+              <p>
+                When evaluating potential agencies, consider their expertise in
+                various aspects of design.
+              </p>
+              <button
+                class="bg-white hover:bg-[rgb(2,69,80)] hover:text-white font-medium flex items-center gap-1 text-[rgb(2,69,80)] mt-5 py-2 px-4 transition delay-50 duration-200 ease"
+              >
+                Read more <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+            <div
+              class="2nd lg:mt-0 mt-10 hover:scale-105 transition delay-0 duration-200"
+            >
+              <img
+                class="shadow-lg"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2023/08/blog-post-2.jpg"
+                alt=""
+              />
+              <h3
+                class="hover:text-[rgb(39,208,109)] transition delay-100 hover: duration-150 ease-in-out py-4 text-xl text-[rgb(2,69,80)] font-semibold"
+              >
+                Storytelling mastery: crafting compelling narratives
+              </h3>
+              <p>
+                The multi-brand system has gained traction, allowing businesses
+                to manage various brands.
+              </p>
+              <button
+                class="bg-white hover:bg-[rgb(2,69,80)] hover:text-white font-medium flex items-center gap-1 text-[rgb(2,69,80)] mt-5 py-2 px-4 transition delay-50 duration-200 ease"
+              >
+                Read more <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+            <div
+              class="3rd lg:mt-0 mt-10 hover:scale-105 transition delay-0 duration-200"
+            >
+              <img
+                class="shadow-lg"
+                src="https://landpress.keydesign.xyz/consulting/wp-content/uploads/sites/2/2023/08/blog-post-3.jpg"
+                alt=""
+              />
+              <h3
+                class="hover:text-[rgb(39,208,109)] transition delay-100 hover:text-shadow-sm duration-150 ease-in-out py-4 text-xl text-[rgb(2,69,80)] font-semibold"
+              >
+                Optimizing your online presence for visibility
+              </h3>
+              <p>
+                A well-defined statement helps participants and ensures everyone
+                is on the same page.
+              </p>
+              <button
+                class="bg-white hover:bg-[rgb(2,69,80)] hover:text-white font-medium flex items-center gap-1 text-[rgb(2,69,80)] mt-5 py-2 px-4 transition delay-50 duration-200 ease"
+              >
+                Read more <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- insights case  end -->
+
+      <!-- footer case start -->
+
+      <section>
+        <div class="container mt-20 w-full bg-[rgb(2,69,80)]">
+          <div class="text px-6 lg:px-16 w-full">
+            <button
+              class="px-1 mt-19 py-1 bg-[rgb(21,83,92)] text-[rgb(38,209,109)]"
+            >
+              Take action today
+            </button>
+
+            <div class="lg:mt-5 mt-3 lg:flex justify-between">
+              <h2 class="lg:text-5xl text-2xl text-white lg:w-150">
+                Ready to supercharge your business? Let's connect
+              </h2>
+              <div class="btn mt-5 lg:mt-0 px- items-center flex gap-6">
+                <button
+                  class="lg:px-7 px-6 py-3 lg:py-3 bg-white text-[rgb(2,69,80)] text-sm font-semibold"
+                >
+                  Discover more
+                </button>
+                <button
+                  class="lg:px-7 px-6 py-3 lg:py-3 bg-[rgb(38,209,109)] text-sm font-semibold text-white"
+                >
+                  Book intro call
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="border mt-14 border-gray-600"></div>
+
+          <!-- Logo -->
+          <div class="">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
